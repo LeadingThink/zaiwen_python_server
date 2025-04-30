@@ -1,0 +1,34 @@
+[project]
+name = "zaiwen-python-server"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "ryouaki", email = "46517115@qq.com" }
+]
+dependencies = [
+    "fastapi>=0.115.12",
+    "uvicorn>=0.34.2",
+    "dotenv>=0.9.9",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff>=0.11.7",
+]
+
+[tool.rye.scripts]
+start = "python -m zaiwen_python_server "
+dev = "python -m zaiwen_python_server " 
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/zaiwen_python_server"]
