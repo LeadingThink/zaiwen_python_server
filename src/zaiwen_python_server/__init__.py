@@ -1,9 +1,11 @@
-from fastapi import APIRouter
-from zaiwen_python_server.zaiwenai import JsonResp, ZaiwenaiApplication, ZaiwenaiConfig
+from fastapi import APIRouter, Request
+from starlette.middleware.base import BaseHTTPMiddleware
+
+from .zaiwenai import JsonResp, Application
 
 # 初始化服务端框架
-app = ZaiwenaiApplication(
-    prefix="/api/v1", options=ZaiwenaiConfig(reload=True, port=8001)
+app = Application(
+    prefix="/api/v1",
 )
 
 router = APIRouter()
@@ -23,6 +25,13 @@ async def aaa():
 app.route(router)
 
 
-def main():
-    app.run()
+async def setup():
+    print("setup")
+
+
+app.setup(setup)
+
+
+async def main():
+    await app.run()
     print("")
