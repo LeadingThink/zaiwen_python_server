@@ -64,17 +64,6 @@ class XlogRotatingFileHandler(TimedRotatingFileHandler):
 
 
 def getBackupCount(when, interval, retention):
-    """
-    根据时间单位和间隔计算保留的日志文件数量。
-
-    参数:
-    when : str : 时间单位 ('S' - 秒, 'M' - 分钟, 'H' - 小时, 'D' - 天)
-    interval : int : 间隔值
-    retention : int : 希望保留的时间量
-
-    返回:
-    int : 计算出的备份数量
-    """
     if when == "S":
         return int(retention * (24 * 60 * 60 / interval))
     elif when == "M":
