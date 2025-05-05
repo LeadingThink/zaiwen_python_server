@@ -1,5 +1,4 @@
-from fastapi import APIRouter, Request
-from starlette.middleware.base import BaseHTTPMiddleware
+from fastapi import APIRouter
 
 from .zaiwenai import JsonResp, Application
 
@@ -34,4 +33,3 @@ app.setup(setup)
 
 async def main():
     await app.run()
-    print("")
